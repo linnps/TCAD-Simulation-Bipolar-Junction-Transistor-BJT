@@ -1,4 +1,4 @@
-# TCAD-Simulation-Bipolar-Junction-Transistor-BJT-
+# TCAD-Simulation-Bipolar-Junction-Transistor-BJT
 <h1>Simulate BJT with Silvaco Athena/Atlas.</h1>
 <hr>
 BJT 3D modeling
