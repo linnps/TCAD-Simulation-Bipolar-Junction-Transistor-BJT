@@ -1,0 +1,56 @@
+go atlas
+TITLE BJT
+
+mesh space.mult=1
+x.m l=0.0 spac=0.05
+x.m l=12 spac=0.05
+
+y.m l=0 spac=0.05
+y.m l=3.25 spac=0.05
+y.m l=3.75 spac=0.05
+y.m l=7 spac=0.05
+
+region num=1 material=air
+region num=2 silicon x.min=0 x.max=12 y.min=0.25 y.max=6.75
+region num=3 silicon x.min=3 x.max=9 y.min=0.25 y.max=3.75
+region num=4 silicon x.min=3.5 x.max=8.5 y.min=0.25 y.max=3.25
+
+electrode num=1 name=emitter x.min=4 x.max=8 y.min=0 y.max=0.25
+electrode num=2 name=base x.min=3.05 x.max=3.45 y.min=0 y.max=0.25
+electrode num=2 name=base x.min=8.55 x.max=8.95 y.min=0 y.max=0.25
+electrode num=3 name=collector x.min=4 x.max=8 y.min=6.75 y.max=7
+
+doping region=2 n.type uniform conc=1.0E16 x.min=0 x.max=12 y.min=0.25 y.max=6.75
+doping region=3 p.type uniform conc=1.0E16 x.min=3 x.max=9 y.min=0.25 y.max=3.75
+doping region=4 n.type uniform conc=5.0E20 x.min=3.5 x.max=8.5 y.min=0.25 y.max=3.25
+
+model bipolar FLDMOB
+
+method newton
+
+solv init
+log outf=transistor1.log
+solve v1=0 v2=0.2 v3=0 vstep=0.01 vfinal=0.5 name=collector
+log off
+save outf=transistor1.str
+
+solv init
+log outf=transistor2.log
+solve v1=0 v2=0.3 v3=0 vstep=0.01 vfinal=0.5 name=collector
+log off
+save outf=transistor2.str
+
+solv init
+log outf=transistor3.log
+solve v1=0 v2=0.4 v3=0 vstep=0.01 vfinal=0.5 name=collector
+log off
+save outf=transistor3.str
+
+quit
+
+
+
+
+
+
+
